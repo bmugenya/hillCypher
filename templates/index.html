@@ -13,15 +13,10 @@
 
     <body >
           <nav class="teal lighten-2" role="navigation">
-    <div class="nav-wrapper container"><a id="logo-container" href="#" class="brand-logo">Discrete Maths-Assignment</a>
-      <ul class="right hide-on-med-and-down">
-        <li><a href="#">16S01ABT017</a></li>
+    <div class="nav-wrapper container"><a id="logo-container" href="#" class="brand-logo">MTH 210</a>
+      <ul class="right">
+        <li>16S01ABT017</li>
       </ul>
-
-      <ul id="nav-mobile" class="sidenav">
-        <li><a href="#"></a></li>
-      </ul>
-      <a href="#" data-target="nav-mobile" class="sidenav-trigger"><i class="material-icons">menu</i></a>
     </div>
   </nav>
 
@@ -32,37 +27,162 @@
         <div class="col s12 m8">
             <div class="container">
              <h1>HillCipher</h1>
-        <p>Hill cipher is a polygraphic substitution ciper.Each letter is represented by a number modulo 26</p>
-        <h6>A=0,B=1,...Z=25</h6>
+        <p>Hill cipher is a classical cryptograpghy based on the polygraphic substitution
+         cipher.It takes a string of characters and replaces them with a ciphertext</p>
+
         <h2>Encryption</h2>
-        <p>Each block of letters(considered as an n-component vector) is multiplied by an invertible n × n matrix, against modulus 26.</p>
+        <p>Each letter is represented by a number, modulo 26.To encrypt a message,
+         each block of 3 letters is multiplied by an invertible 3 × 3 square matrix,
+          against modulus 26.</p>
 
-        <h2>Decryption</h2>
-        <p> Each block is multiplied by the inverse of the matrix used for encryption.</p>
+        <h4>Message: MTH</h4>
+         <h4>KEY: MTHMATRIX</h4>
+         <h4>Ciphertext: IRX</h4>
+
+    <table style="border-left:2px solid #4db6ac; border-right:2px solid #4db6ac;"
+     class="col s3 m3">
+<thead>
+<tr>
+<th>   Key </th>
+<th></th>
+<th>Modulo</th>
+
+</tr>
+</thead>
+<tbody>
+
+
+       <tr>
+
+
+      <td>12</td>
+        <td>19</td>
+          <td>7</td>
+
+       </tr>
+
+              <tr>
+
+
+      <td>12</td>
+        <td>0</td>
+          <td>19</td>
+
+       </tr>
+
+           <tr>
+
+
+      <td>17</td>
+        <td>8</td>
+          <td>23</td>
+
+       </tr>
+
+
+
+
+</tbody>
+</table>
+<div class="col s2 m2">
+<h4 style="color:#4db6ac; text-align: center;">X</h4>
+</div>
+
+
+
+             <table style="border-left:2px solid #4db6ac; border-right:2px solid #4db6ac;"
+              class="col s3 m3">
+
+
+<thead>
+<tr>
+
+<th>Message modulo</th>
+
+</tr>
+</thead>
+<tbody>
+
+       <tr>
+          <td>12</td>
+       </tr>
+
+              <tr>
+
+
+
+          <td>19</td>
+
+       </tr>
+
+           <tr>
+
+          <td>7</td>
+
+       </tr>
+
+
+
+
+</tbody>
+</table>
+<div class="col s1 m1">
+<h4 style="color:#4db6ac; text-align: center;">=</h4>
+</div>
+
+             <table style="border-left:2px solid #4db6ac; border-right:2px solid #4db6ac;"
+
+              class="col s3 m3">
+
+              <thead>
+
+<th>3 x 3</th>
+</thead>
+<tbody>
+<tr>
+<td>554</td>
+</tr>
+<tr>
+<td>227</td>
+</tr>
+<tr>
+<td>517</td>
+</tr>
+</tbody>
+</table>
+
+<div class="col s12 m6">
+<h5>12 x 12 + 19 x 19 + 7 x 7</h5>
+<h5>12 x 12 + 0 x 19 + 19 x 7</h5>
+<h5>17 x 12 + 8 x 19 + 23 x 7</h5>
+</div>
+<div class="col s12 m6">
+
+<h5>554</h5>
+<h5>227</h5>
+<h5>517</h5>
 
 </div>
-</div>
 
-        <div class="col s12 m4">
+     <h2>Algorithm</h2>
+        <p>Step : 1 Create a 3 * 3 array to store the key </p>
+        <p>Step : 2 Create a 1 * 3 array to store the message </p>
+        <p>Step : 3 Create a 1 * 3 array to store the cipher </p>
+        <p>Step : 4 create a loop that iterates over 3 values</p>
+           <p>Step :5 create a nested loop that iterates over 3 values</p>
 
-<div class="card-panel teal lighten-2">
-{% for val in ans %}
 
-{{ val }}
-
-{% endfor %}
-
-</div>
-             <form class="col s12" action="{{url_for('index')}}" method = "post" enctype=multipart/form-data>
+        <h2>Try It</h2>
+   <form class="col s12" action="{{url_for('index')}}" method = "post" enctype=multipart/form-data>
         <div class="input-field col s12">
 
-                <input type ="text"  maxlength="100" required name="message">
-                 <label for="message">Message:</label>
+                <input pattern=".{3,}"  maxlength="3" title="3 characters minimum"type ="text"  required name="message">
+                 <label  for="message">Message</label>
         </div>
         <div class="input-field col s12">
 
                 <label for="key">Key</label>
-                <input type ="text"  maxlength="100" required name="key">
+                <input pattern=".{9,}"  maxlength="9"  type ="text" required title="9 characters minimum" name="key">
         </div>
 
                 <button class="btn-large waves-effect waves-light teal lighten-2" type="submit"  id="submit">
@@ -70,6 +190,62 @@
 
 
             </form>
+
+<h4>
+    {% for val in ans %}
+
+ {{ val }}
+
+{% endfor %}</h4>
+
+
+
+
+
+
+
+</div>
+
+
+
+
+</div>
+
+
+        <div class="col s12 m4">
+
+
+
+<h5>Letter and number modulo</h5>
+
+
+      <table>
+<thead>
+<tr>
+<th>Letter</th>
+<th>Modulo</th>
+
+</tr>
+</thead>
+<tbody>
+
+    {% for key in letters %}
+       <tr>
+
+
+
+      <td>{{ letters[key]}}</td>
+        <td>{{ key }} </td>
+
+
+       </tr>
+      {% endfor %}
+
+
+</tbody>
+</table>
+
+
 
       </div>
   </div>

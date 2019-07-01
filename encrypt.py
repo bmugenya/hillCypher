@@ -1,5 +1,4 @@
 class Cipher():
-    # Python3 code to implement Hill Cipher
 
     def __init__(self):
 
