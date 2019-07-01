@@ -1,4 +1,4 @@
-from flask import Flask,jsonify,render_template,request
+from flask import Flask,jsonify,render_template,request,Response
 from encrypt import Cipher
 
 
@@ -18,9 +18,9 @@ def index():
 
         ans = Cipher().HillCipher(message, key)
 
-        return render_template('index.html',ans=ans)
+        return Response(render_template('index.html',ans=ans))
 
-    return render_template('index.html')
+    return Response(render_template('index.html'))
 
 
 
